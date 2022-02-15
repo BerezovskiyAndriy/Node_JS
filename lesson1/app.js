@@ -23,12 +23,18 @@ const fs = require('fs');
 // })
 
 
-const onlineUsers = [{name: 'Andriy', age: 29, city: 'Lviv' }];
-const inPersonUsers = [{name: 'Orest', age: 24, city: 'Kyiv' }];
+const onlineUsers = [
+    {name: 'Andriy', age: 29, city: 'Lviv' },
+    {name: 'Olia', age: 25, city: 'Odessa' }
+];
+const inPersonUsers = [
+    {name: 'Orest', age: 24, city: 'Kyiv' },
+    {name: 'Oksana', age: 26, city: 'Ivano-Frankivsk' }
+];
 
 fs.writeFile(path.join(__dirname,'main','inPerson','inPerson.txt'),
     `${inPersonUsers.map(person =>
-        `NAME: ${person.name} \nAGE: ${person.age} \nCITY: ${person.city}`)}`,
+        `\nNAME: ${person.name} \nAGE: ${person.age} \nCITY: ${person.city}`)}`,
     (err) => {
     if (err) {
         console.log(err);
@@ -38,7 +44,7 @@ fs.writeFile(path.join(__dirname,'main','inPerson','inPerson.txt'),
 
 fs.writeFile(path.join(__dirname,'main','online','online.txt'),
     `${onlineUsers.map(users =>
-        `NAME: ${users.name} \nAGE: ${users.age} \nCITY: ${users.city}`)}`,
+        `\nNAME: ${users.name} \nAGE: ${users.age} \nCITY: ${users.city}`)}`,
     (err) => {
         if (err) {
             console.log(err);
@@ -68,4 +74,4 @@ const helper = () => {
     }
 }
 
-helper();
+// helper();
