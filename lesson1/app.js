@@ -63,30 +63,46 @@ const fs = require('fs');
 //     })
 // })
 
-// const fn = () => {
-//   fs.readdir(path.join(__dirname,'common'),(err,data) => {
-//       if (err) {
-//           console.log(err);
-//           throw err;
-//       }
-//       if (path.join(__dirname,'common','test-wrap','test1','test1.txt')) {
-//           fs.truncate(path.join(__dirname,'common','test-wrap','test1','test1.txt'),(err) => {
-//               if (err) {
-//                   console.log(err);
-//                   throw err;
-//               }
-//           })
-//       }
-//       else {
-//           fs.rename(path.join(__dirname,'common','test-wrap','test1'),
-//               path.join(__dirname,'common','_newtest-wrap','_newtest1'),(err) => {
-//                 if (err) {
-//                     console.log(err);
-//                     throw err;
-//                 }
-//           })
-//       }
-//   })
-// }
-//
-// fn();
+const pathFile = path.join(__dirname,'common','test-wrap','test1.txt');
+const pathAllDirectory = path.join(__dirname,'common','test-wrap');
+const pathRenamedDirectory = path.join(__dirname,'common','_newtest-wrap');
+
+const fn = () => {
+    fs.readdir(path.join(__dirname,'common'),(err,data) => {
+        if (err) {
+            console.log(err);
+            throw err;
+        }
+
+        fs.stat(pathFile,(err, stats) => {
+            if (err) {
+                console.log(err);
+                throw err
+            }
+
+            if (stats.isDirectory()) {
+                fs.rename(pathAllDirectory,pathRenamedDirectory,(err) => {
+                    if (err) {
+                        console.log(err);
+                        throw err;
+                    }
+                })
+            }
+
+            if (stats.isFile()) {
+                fs.truncate(pathFile,(err) => {
+                    if (err) {
+                        console.log(err);
+                        throw err;
+                    }
+                })
+            }
+        })
+
+    })
+}
+
+fn();
+
+
+
