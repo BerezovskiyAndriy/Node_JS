@@ -1,0 +1,3 @@
+NAME: Andriy,
+AGE: 29,
+CITY: Lviv
