@@ -71,7 +71,7 @@ app.post('/signIn',(req, res) => {
     } else {
         res.redirect('/error');
     }
-})
+});
 
 app.use((req, res) => {
     res.render('notFound');
