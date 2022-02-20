@@ -1,4 +1,4 @@
-const users = require("../db/users");
+const users = require('../db/users');
 
 function isEmailValid (req,res,next) {
     try {
@@ -6,7 +6,7 @@ function isEmailValid (req,res,next) {
         const filteredUser = users.filter(user => user.email.includes(email));
 
         if (filteredUser[0]) {
-            throw new Error('This email is busy!')
+            throw new Error('This email is busy!');
         }
 
         next();

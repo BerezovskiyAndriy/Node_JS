@@ -1,4 +1,4 @@
-const users = require("../db/users");
+const users = require('../db/users');
 
 class UserController {
     renderUsers (req,res) {
@@ -6,14 +6,14 @@ class UserController {
         let filteredArray = [...users];
 
         if (age) {
-            filteredArray = filteredArray.filter(user => +user.age === +age)
+            filteredArray = filteredArray.filter(user => +user.age === +age);
         }
 
         if (city) {
             filteredArray = filteredArray.filter(user => user.city === city);
         }
 
-        res.render('users', { filteredArray })
+        res.render('users', { filteredArray });
     }
 
     getUsersById (req,res) {
@@ -24,7 +24,7 @@ class UserController {
             return;
         }
 
-        res.render('userInfo', { user })
+        res.render('userInfo', { user });
     }
 }
 

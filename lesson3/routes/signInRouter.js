@@ -1,4 +1,5 @@
 const { Router } = require('express');
+
 const signInController = require('../controllers/signInController');
 const signInMiddleware = require('../middleware/isEmailValid');
 
